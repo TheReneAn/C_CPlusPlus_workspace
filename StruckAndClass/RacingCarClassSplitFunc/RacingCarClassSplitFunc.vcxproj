@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{ce46710b-816b-4a39-b4dd-05ba73ec2325}</ProjectGuid>
-    <RootNamespace>StruckAndClass</RootNamespace>
+    <ProjectGuid>{51469da6-7600-4d60-b713-a46fef160d18}</ProjectGuid>
+    <RootNamespace>RacingCarClassSplitFunc</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>RacingCar_Struct</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -140,7 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="RacingCar.cpp" />
+    <ClInclude Include="Car.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Car.cpp" />
+    <ClCompile Include="RacingMain.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

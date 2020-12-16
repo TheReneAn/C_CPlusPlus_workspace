@@ -1,28 +1,17 @@
+#define _CRT_SECURE_NO_WARNINGS			// For "strcpy"
+
 #include <iostream>
+#include <cstring>
+#include "Car.h"
+
 using namespace std;
 
-namespace CAR_CONST
+void Car::InitMembers(const char* ID, int fuel)
 {
-	enum
-	{
-		ID_LEN		= 20,
-		MAX_SPD		= 200, 
-		FUEL_STEP	= 2,
-		ACC_STEP	= 10,
-		BRK_STEP	= 10
-	};
+	strcpy(gamerID, ID);
+	fuelGauge = fuel;
+	curSpeed = 0;
 }
-
-struct Car
-{
-	char gamerID[CAR_CONST::ID_LEN];	// User ID
-	int fuelGauge;						// Fuel Gauge
-	int curSpeed;						// Current Speed
-
-	void ShowCarstate();
-	void Accel();
-	void Break();
-};
 
 void Car::ShowCarstate()
 {
@@ -55,18 +44,4 @@ void Car::Break() {
 	}
 
 	curSpeed -= CAR_CONST::BRK_STEP;
-}
-
-int main(void) {
-	Car run99 = { "run99", 100, 0 };
-
-	run99.Accel();
-	run99.Accel();
-	run99.ShowCarstate();
-
-	cout << endl;
-	run99.Break();
-	run99.ShowCarstate();
-
-	return 0;
 }
