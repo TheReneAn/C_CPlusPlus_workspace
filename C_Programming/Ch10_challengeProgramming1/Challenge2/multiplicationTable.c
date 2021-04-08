@@ -26,3 +26,13 @@ int main() {
 
 	return 0;
 }
+
+/*
+* Let's write a program that receives two integers from the program user and outputs a multiplication table.
+* 
+* For example, if a program user enters 3 and 5, 3 and 4 and 5 shall be printed, and if 2 and 3 are entered, 2 and 3 and 4 shall be printed.
+* 
+* However, there is one condition.
+* Users should be free from the input order when entering two numbers.
+* That is, whether inputting 3 and 5 or 5 and 3 the program should output the same results.
+*/

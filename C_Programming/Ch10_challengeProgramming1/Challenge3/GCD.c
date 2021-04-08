@@ -42,3 +42,7 @@ int main() {
 
 	return 0;
 }
+
+/*
+* A program that receives two integers to obtain the maximum common number (GCD)
+*/

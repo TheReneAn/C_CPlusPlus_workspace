@@ -15,3 +15,7 @@ int main() {
 
 	return 0;
 }
+
+/*
+* A program that receives a decimal integer and outputs it in hexadecimal.
+*/

@@ -15,3 +15,9 @@ int main() {
 
 	return 0;
 }
+
+/*
+Let's get seconds from a user.
+
+And write a program that prints it out in the form of [hour, minute, second].
+*/

@@ -6,7 +6,7 @@
 int main() {
 
 	/*
-	* General method
+	********************* General method *********************
 	*
 	int i, j, count = 50;
 
@@ -24,7 +24,7 @@ int main() {
 	}
 	*/
 
-	// Sieve of Eratosthenes method
+	/*************** Sieve of Eratosthenes method ***************/
 
 	int i;
 
@@ -57,3 +57,10 @@ int main() {
 
 	return 0;
 }
+
+/*
+Let's write a program that outputs 10 prime numbers.
+
+For your information, if the integer num is only divided into 1 and num, this is a small number.
+Therefore, three is a minority. But four is not a minority. This is because they are divided into 1, 2, and 4.
+*/

@@ -21,3 +21,7 @@ int main() {
 
 	return 0;
 }
+
+/*
+Let's make a recursive function that obtains n of 2©ú
+*/

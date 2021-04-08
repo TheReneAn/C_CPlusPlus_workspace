@@ -23,3 +23,11 @@ int main() {
 
 	return 0;
 }
+
+/*
+* Today is Friday. Now I have 5,000 won in my pocket. 
+* If you rent a DVD, you have 3,500 won left.
+* I will stop by the supermarket and buy cream bread (500 won), shrimp crackers (700 won), and coke (400 won).
+* If you want to buy one or more of these three items without leaving any change, 
+* How should I proceed with the purchase?
+*/

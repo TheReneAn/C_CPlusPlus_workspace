@@ -1,5 +1,3 @@
-// 2^n <= K
-
 #include <stdio.h>
 
 int main() {
@@ -23,3 +21,11 @@ int main() {
 
 	return 0;
 }
+
+/*
+Enter the number k from the program user.
+
+Then, write a program that calculates and outputs the maximum value of n in which the formula is formed.
+
+2©ú ¡Â K
+*/
