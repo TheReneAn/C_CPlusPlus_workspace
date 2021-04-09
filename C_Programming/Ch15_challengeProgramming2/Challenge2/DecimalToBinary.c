@@ -32,3 +32,11 @@ int main() {
 
 	return 0;
 }
+
+/*
+Create a program that receives an integer input from the user in decimal form and then converts it into binary and outputs it.
+ 
+Example :
+Input: 12
+Output: 1100
+*/

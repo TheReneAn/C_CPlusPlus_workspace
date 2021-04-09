@@ -34,3 +34,10 @@ int main() {
 
 	return 0;
 }
+
+/*
+Make a program that gets a length of an English word.
+
+Get a word from a user.
+For example, if a user enters the "Array" word, it should be showed '5'
+*/

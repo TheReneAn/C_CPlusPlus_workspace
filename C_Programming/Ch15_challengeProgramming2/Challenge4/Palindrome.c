@@ -38,3 +38,8 @@ int main() {
 
 	return 0;
 }
+
+/*
+Let's make a program that check whether it is a Palindrome word or not.
+It must match up to the lower case.
+*/

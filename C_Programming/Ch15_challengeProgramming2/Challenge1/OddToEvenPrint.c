@@ -45,3 +45,14 @@ int main() {
 
 	return 0;
 }
+
+/*
+Declare an array of 10 lengths and receive a total of 10 integers.
+Print by dividing odd and even numbers.
+
+Example :
+Input: 1 2 3 4 5 6 7 8 9 0
+Output: 
+Odd: 1, 3, 5, 7, 9
+Even: 2, 4, 6, 8, 0
+*/

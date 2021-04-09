@@ -49,3 +49,12 @@ int main() {
 
 	return 0;
 }
+
+/*
+There is an array of ten lengths.
+If the number entered is odd, it fills from the front of the column, and if it is even, it fills from the back.
+
+Example :
+Input: 1 1 4 4 4 4 3 3 2 2
+Output: 1 1 3 3 2 2 4 4 4 4 
+*/

@@ -18,3 +18,8 @@ int main() {
 
 	return 0;
 }
+
+/*
+Get an English word from the user and save it in the char type array.
+And then reverse the word.
+*/
