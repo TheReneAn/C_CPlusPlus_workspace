@@ -4,13 +4,12 @@
 #define SIZE 51
 
 int main() {
-
+	
 	/*
 	********************* General method *********************
-	*
-	int i, j, count = 50;
+	int i, j, count = SIZE;
 
-	for (i = 2; i <= count; i++) {
+	for (i = 2; i <= SIZE; i++) {
 		for (j = 2; j <= i; j++) {
 
 			if (i % j == 0) {
@@ -53,7 +52,7 @@ int main() {
 		if (Sieve_Number[i] != 0) {
 			printf("%4d", Sieve_Number[i]);
 		}
-	}
+	}	
 
 	return 0;
 }
