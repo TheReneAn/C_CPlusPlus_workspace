@@ -1,7 +1,7 @@
 /*
-* Banking System Ver 0.1
+* Banking System Ver 0.2
 * Name: Rene An
-* Content: C type
+* Content: Declare a Class, Object pointer
 */
 
 #pragma warning(disable:4996)
@@ -12,29 +12,61 @@ using namespace std;
 
 const int NAME_LEN = 30;
 
-typedef struct {
-	int accountNumber;
-	char name[NAME_LEN];
-	int balance;
-} Customer;
-
 void ShowMenu();
 void MakeAccount();
 void DepositMoney();
 void WithdrawMoney();
 void ShowAllCusInfo();
-void ShowCusBalance(int cusLocation);
 
 enum { MAKE = 1, DEPOSIT, WITHDRAW, INQUIRE, EXIT };
 
-Customer cus[100];	// Customer array
-int cusNumber = 0;	// Customer number
+class Customer {
+private:
+	int accountNumber;
+	char* name;
+	int balance;
+public:
+	// Constructor
+	Customer(int accNumber, int moneny, char* cusname)
+		: accountNumber(accNumber), balance(moneny)
+	{
+		name = new char[strlen(cusname) + 1];
+		strcpy(name, cusname);
+	}
+	// Destructor
+	~Customer() {
+		delete[] name;
+	}
+
+	void Deposit(int money) {
+		balance += money;
+	}
+
+	void Withdraw(int money) {
+		balance -= money;
+	}
+
+	void ShowCusInfo() {
+		cout << "Account: " << accountNumber << endl;
+		cout << "Name : " << name << endl;
+		cout << "Balance : " << balance << "\n" << endl;
+	}
+
+	int GetaccountNumber() { return accountNumber; }
+
+	void ShowCusBalance() {
+		cout << "[ " << name << "'s balance ] " << balance << endl << endl;
+	}
+};
+
+Customer* cus[100];
+int cusNumber = 0;
 
 int main() {
 
 	int menuNum = 0;
 
-	printf("¡Ø¡Ø¡Ø Banking System Ver 0.1 ¡Ø¡Ø¡Ø\n\n");
+	cout << "¡Ø¡Ø¡Ø Banking System Ver 0.2 ¡Ø¡Ø¡Ø\n" << endl;
 
 	while (1) {
 		// Show menu & choose the menu number
@@ -60,7 +92,7 @@ int main() {
 		case EXIT:
 			return 0;
 		default:
-			cout << "\n*** Enter a wrong number ***\n";
+			cout << "*** Enter a wrong number ***\n";
 			cout << "Please enter again.\n\n";
 		}
 	}
@@ -70,11 +102,11 @@ int main() {
 
 void ShowMenu() {
 	cout << "----- Menu -----\n";
-	printf("1. Creat a new account\n");
-	printf("2. Deposit\n");
-	printf("3. Withdraw\n");
-	printf("4. Show all acounts\n");
-	printf("5. Exit\n\n");
+	cout << "1. Creat a new account\n";
+	cout << "2. Deposit\n";
+	cout << "3. Withdraw\n";
+	cout << "4. Show all acounts\n";
+	cout << "5. Exit\n\n";
 }
 
 void MakeAccount() {
@@ -93,7 +125,7 @@ void MakeAccount() {
 		// Validate the account 
 		if (1 <= cusNumber) {
 			for (i = 0; i < cusNumber; i++) {
-				if (newAccount == cus[i].accountNumber) {
+				if (newAccount == cus[i]->GetaccountNumber()) {
 					cout << "\n!!! We already have the account in our bank !!!\n" << endl;
 					cout << "Please enter another account numbers.\n" << endl;
 					check = 0;
@@ -118,12 +150,10 @@ void MakeAccount() {
 	cin >> newBalance;
 	cout << endl;
 
-	cus[cusNumber].accountNumber = newAccount;
-	strncpy(cus[cusNumber].name, temp_Name, sizeof(cus[cusNumber].name) - 1);
-	cus[cusNumber].balance = newBalance;
-
-	cout << "¡Ú¡Ú¡Ú Compelete make an account ¡Ú¡Ú¡Ú" << endl;
-	ShowCusBalance(cusNumber);
+	// New Customer
+	cus[cusNumber] = new Customer(newAccount, newBalance, temp_Name);
+	cus[cusNumber]->ShowCusBalance();
+	cout << "¡Ú¡Ú¡Ú Compelete make an account ¡Ú¡Ú¡Ú\n" << endl;
 
 	// Increcing customer number
 	cusNumber++;
@@ -147,8 +177,8 @@ void DepositMoney() {
 			cin >> findAccount;
 
 			// Check customers
-			for (i = 0; i <= cusNumber; i++) {
-				if (findAccount == cus[i].accountNumber) {
+			for (i = 0; i < cusNumber; i++) {
+				if (findAccount == cus[i]->GetaccountNumber()) {
 					cusLocation = i;
 					check = 1;
 					break;
@@ -168,7 +198,7 @@ void DepositMoney() {
 
 		// Deposit amount
 		while (1) {
-			cout << "[ " << cus[cusLocation].name << "'s balance ] " << cus[cusLocation].balance << endl;
+			cus[cusLocation]->ShowCusBalance();
 			cout << "Deposit amount: ";
 			cin >> depositAmount;
 
@@ -182,10 +212,11 @@ void DepositMoney() {
 			}
 		}
 
-		cus[cusLocation].balance += depositAmount;
+		// Deposit the amount
+		cus[cusLocation]->Deposit(depositAmount);
 
 		cout << "\n¡Ú¡Ú¡Ú Compelete deposit ¡Ú¡Ú¡Ú" << endl;
-		ShowCusBalance(cusLocation);
+		cus[cusLocation]->ShowCusBalance();
 	}
 }
 
@@ -207,8 +238,8 @@ void WithdrawMoney() {
 			cin >> findAccount;
 
 			// Check customers
-			for (i = 0; i <= cusNumber; i++) {
-				if (findAccount == cus[i].accountNumber) {
+			for (i = 0; i < cusNumber; i++) {
+				if (findAccount == cus[i]->GetaccountNumber()) {
 					cusLocation = i;
 					check = 1;
 					break;
@@ -226,9 +257,9 @@ void WithdrawMoney() {
 		} while (check == 0);
 
 
-		// Deposit amount
+		// Withdraw amount
 		while (1) {
-			cout << "[ " << cus[cusLocation].name << "'s balance ] " << cus[cusLocation].balance << endl;
+			cus[cusLocation]->ShowCusBalance();
 			cout << "Withdraw amount: ";
 			cin >> WithdrawAmount;
 
@@ -242,10 +273,11 @@ void WithdrawMoney() {
 			}
 		}
 
-		cus[cusLocation].balance -= WithdrawAmount;
+		// Withdraw the amount
+		cus[cusLocation]->Withdraw(WithdrawAmount);
 
 		cout << "\n¡Ú¡Ú¡Ú Compelete deposit ¡Ú¡Ú¡Ú" << endl;
-		ShowCusBalance(cusLocation);
+		cus[cusLocation]->ShowCusBalance();
 	}
 }
 
@@ -257,13 +289,7 @@ void ShowAllCusInfo() {
 		cout << "----- Customer lists -----" << endl;
 		for (int i = 0; i < cusNumber; i++) {
 			cout << i + 1 << ")" << endl;
-			cout << "Account: " << cus[i].accountNumber << endl;
-			cout << "Name : " << cus[i].name << endl;
-			cout << "Balance : " << cus[i].balance << "\n\n" << endl;
+			cus[i]->ShowCusInfo();
 		}
 	}
-}
-
-void ShowCusBalance(int cusLocation) {
-	cout << "[ " << cus[cusLocation].name << "'s balance ] " << cus[cusLocation].balance << endl << endl;
 }
