@@ -46,13 +46,13 @@ public:
 	void Deposit(int money) { balance += money; }
 	void Withdraw(int money) { balance -= money; }
 
-	void ShowCusInfo() {
+	void ShowCusInfo() const {
 		cout << "Account: " << accountNumber << endl;
 		cout << "Name : " << name << endl;
 		cout << "Balance : " << balance << "\n" << endl;
 	}
 	
-	void ShowCusBalance() {
+	void ShowCusBalance() const {
 		cout << "[ " << name << "'s balance ] " << balance << endl << endl;
 	}
 
